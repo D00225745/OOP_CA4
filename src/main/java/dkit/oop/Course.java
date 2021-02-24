@@ -11,7 +11,13 @@ public class Course {
     // Accepts a Course object as an argument and copies all the field values
     // into a new Course object. Returns the new cloned object.
     // (add here)
-
+    public Course (Course course)
+    {
+        courseId = course.courseId;
+        level = course.level;
+        title = course.title;
+        institution = course.institution;
+    }
 
 
     // Constructor

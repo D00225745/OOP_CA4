@@ -1,7 +1,5 @@
 package dkit.oop;
 
-import java.util.List;
-
 /**
  *
  * Notes:
@@ -14,6 +12,8 @@ public class App
     {
         System.out.println( "CAO Online - CA4" );
         new App().start();
+
+
     }
 
     private void start() {

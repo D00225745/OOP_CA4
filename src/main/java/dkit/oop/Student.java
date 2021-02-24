@@ -10,7 +10,13 @@ public class Student {
     // Copies the contents of a Student object argument into
     // a new Student object, and returns that new object (a clone)
     // (add here)
-
+    public Student (Student student)
+    {
+        caoNumber = student.caoNumber;
+        dateOfBirth = student.dateOfBirth;
+        password = student.password;
+        email = student.email;
+    }
 
     // Constructor
     public Student(int caoNumber, String dateOfBirth, String password, String email) {
