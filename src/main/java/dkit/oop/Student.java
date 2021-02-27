@@ -1,7 +1,9 @@
 package dkit.oop;
 
 public class Student {
-    private int caoNumber;  // In the CAO system, cao number is unique identifier for student
+
+    private int caoNumber;  // In the CAO system, cao number is unique identifier for students
+    private String name;  // Name of student
     private String dateOfBirth; // yyyy-mm-dd
     private String password;    // min 8 characters
     private String email;
@@ -10,17 +12,25 @@ public class Student {
     // Copies the contents of a Student object argument into
     // a new Student object, and returns that new object (a clone)
     // (add here)
-    public Student (Student student)
+
+    public Student ()
     {
-        caoNumber = student.caoNumber;
-        dateOfBirth = student.dateOfBirth;
-        password = student.password;
-        email = student.email;
+        this(123,"Cain","2001-02-19","ShadowAssassin","KaynMaynmail");
+    }
+
+    public Student(Student student1)
+    {
+        this.caoNumber = student1.caoNumber;
+        this.name = student1.name;
+        this.dateOfBirth = student1.dateOfBirth;
+        this.password = student1.password;
+        this.email = student1.email;
     }
 
     // Constructor
-    public Student(int caoNumber, String dateOfBirth, String password, String email) {
+    public Student(int caoNumber, String name, String dateOfBirth, String password, String email) {
         this.caoNumber = caoNumber;
+        this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
         this.email = email;
@@ -35,6 +45,10 @@ public class Student {
     public void setCaoNumber(int caoNumber) {
         this.caoNumber = caoNumber;
     }
+
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
 
     public String getDayOfBirth() {
         return dateOfBirth;
@@ -64,6 +78,7 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "caoNumber=" + caoNumber +
+                ", name='" + name + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +

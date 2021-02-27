@@ -8,7 +8,7 @@ package dkit.oop;
  * Only administrators would typically be allowed to update this data,
  * but other users can get a COPY of all the courses by calling getAllCourses().
  * The Web Client would need this data to display the course codes,
- * course titles and institutions to the student.
+ * course titles and institutions to the students.
  */
 
 public class CourseManager {

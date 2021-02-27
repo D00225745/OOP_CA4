@@ -1,7 +1,7 @@
 package dkit.oop;
 
-// Stores all student CAO choices.
-// Allows student to make course choices, save them and update them later.
+// Stores all students CAO choices.
+// Allows students to make course choices, save them and update them later.
 //
 // emphasis on speed of access when multiple users are accessing this at same time
 //
@@ -9,8 +9,6 @@ package dkit.oop;
 // data over the internet to a web client.
 //
 // Clone all received and returned objects - encapsulation
-
-import java.util.*;
 
 public class CourseChoicesManager {
 
@@ -26,7 +24,7 @@ public class CourseChoicesManager {
 
 
     // CourseChoicesManager DEPENDS on both the StudentManager and CourseManager to access
-    // student details and course details.  So, we receive a reference to each via
+    // students details and course details.  So, we receive a reference to each via
     // the constructor.
     // This is called "Dependency Injection", meaning that we
     // inject (or pass in) objects that this class requires to do its job.
