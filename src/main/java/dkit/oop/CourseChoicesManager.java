@@ -29,6 +29,7 @@ public class CourseChoicesManager {
     // caoNumber, course selection list - for fast access
     private Map<Student, List<Course>> studentChoices = new HashMap<>();
 
+
     // CourseChoicesManager DEPENDS on both the StudentManager and CourseManager to access
     // students details and course details.  So, we receive a reference to each via
     // the constructor.
@@ -47,11 +48,15 @@ public class CourseChoicesManager {
 //    public getCourseDetails() {
 //    }
 //
-//    public  getStudentChoices() {
-//    }
+      public void getStudentChoices(int caoNumber)
+      {
+          //selectedChoices.put(caoNumber);
+      }
 //
-//    void updateChoices() {
-//    }
+      void updateChoices(int caoNumber, List<String> studentChoices)
+      {
+         // selectedChoices.put(caoNumber, studentChoices);
+      }
 //
 //    public  getAllCourses() {
 //    }

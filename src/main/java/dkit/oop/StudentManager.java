@@ -56,7 +56,62 @@ public class StudentManager {
 
 //    public getStudent() {
 //    }
-//
+public static void addStudent()
+{
+    int caoNumber = Integer.parseInt(enterInfo("caoNumber"));
+    String name = enterInfo("name");
+    String dateOfBirth = enterInfo("dateOfBirth");
+    String password = enterInfo("password");
+    String email = enterInfo("email");
+}
+
+    private static String enterInfo(String info)
+    {
+        String input;
+        System.out.println("Enter your student: " + info + " .");
+        input = keyboard.nextLine();
+        return input;
+    }
+    //
+    public void removeStudent()
+    {
+        if(this.students != null)
+        {
+            String studentToRemove = enterInfo("Student to remove");
+            Student studentsToRemove = findStudent(studentToRemove);
+            if(studentsToRemove != null)
+            {
+                students.remove(studentToRemove);
+            }
+            else
+            {
+                System.out.println("Selected course does not exist..");
+            }
+        }
+    }
+
+    private Student findStudent(String studentToFind)
+    {
+        if(students.containsKey(studentToFind))
+        {
+            students.get(studentToFind);
+        }
+        return null;
+    }
+
+    public void displayStudent()
+    {
+        String studentToDisplay = enterInfo("student to display");
+        Student studentToPrint = findStudent(studentToDisplay);
+        if(studentToPrint != null)
+        {
+            System.out.println(studentToPrint);
+        }
+        else
+        {
+            System.out.println("Seleced student does not exist...");
+        }
+    }
 //    public addStudent() {
 //    }
 //

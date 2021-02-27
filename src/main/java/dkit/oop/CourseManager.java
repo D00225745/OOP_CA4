@@ -1,6 +1,9 @@
 package dkit.oop;
 
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -17,6 +20,7 @@ import java.util.Scanner;
 public class CourseManager {
 
     HashMap<String, Course> courses = new HashMap<>();
+
     private static Scanner keyboard = new Scanner(System.in);
     // Store all the Course details.
     // Requires fast access given courseId.
@@ -25,33 +29,34 @@ public class CourseManager {
         // Hardcode some values to get started
         // load from text file "courses.dat" and populate coursesMap
     }
-/*
-    private void loadCourseFromFile()
+
+    private void loadCoursesFromFile(HashMap<Integer, Course> courses)
     {
-        try(Scanner courseFile = new Scanner(new BufferedReader(new FileReader("courses.txt"))));
+        try(Scanner courseFile = new Scanner(new BufferedReader(new FileReader("courses.txt"))))
         {
             String input;
-            while(coursesFile.hasNextLine())
+            while(courseFile.hasNextLine())
             {
-                input = coursesFile.nextLine();
+                input = courseFile.nextLine();
                 String [] data = input.split(",");
                 String courseId = data[0];
                 String level = data[1];
                 String title = data[2];
                 String institution = data[3];
-                Course readInCourse = new Course(courseId, level, title, institution);
-                this.courses.put.(courseId, readInCourse);
-                
+
+
+                Course readInCourses = new Course(courseId,level,title,institution);
+                this.courses.put(courseId,readInCourses);
+
             }
         }
 
-        catch (FileNotFoundException e)
+        catch (FileNotFoundException fne)
         {
-            e.printStackTrace();
+            System.out.println(fne.getMessage());
         }
-
     }
-*/
+
 
 
 //
@@ -59,12 +64,12 @@ public class CourseManager {
 //    public  getAllCourses() {
 //    }
 //
-    /*
+
       public static void addCourse()
       {
           String courseId = enterField("courseId");
           String level = enterField("level");
-          String title = enterFiled("title");
+          String title = enterField("title");
           String institution = enterField("institution");
       }
 
@@ -97,7 +102,7 @@ public class CourseManager {
     {
         if(courses.containsKey(courseToFind))
         {
-            return.courses.get(courseToFind);
+            courses.get(courseToFind);
         }
         return null;
     }
@@ -116,7 +121,7 @@ public class CourseManager {
         }
     }
 
-     */
+
 
     // editCourse(courseId);       // not required for this iteration
 
