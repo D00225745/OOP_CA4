@@ -5,9 +5,7 @@ package dkit.oop;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class StudentManager {
@@ -53,45 +51,7 @@ public class StudentManager {
         }
     }
 
-    public void logIn()
-    {
-        boolean loop = true;
 
-        int caoNumber = 0;
-
-            while(loop)
-            {
-                try {
-                    caoNumber = Integer.parseInt(enterinfo("caoNumber"));
-                    loop = false;
-                    isRegistered(caoNumber);
-                    }
-
-                catch(NumberFormatException nfe)
-                {
-                    System.out.println("enter a valid CAO number");
-                }
-
-                String password = enterinfo("password");
-                String dateOfBirth = enterinfo("dateOfBirth");
-                boolean loggedIn = false;
-
-                Student student = students.get(caoNumber);
-                    if(student.getDayOfBirth().equals(dateOfBirth) && student.getPassword().equals(password))
-                    {
-                        students.keySet().contains(caoNumber);
-                    }
-                }
-            }
-            
-
-        private String enterinfo(String info)
-        {
-            String input;
-            System.out.println("please enter your " + info + " .");
-            input keyboard.nextLine();
-            return input;
-        }
         
 
 //    public getStudent() {

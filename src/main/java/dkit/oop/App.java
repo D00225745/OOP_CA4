@@ -83,6 +83,16 @@ public class App
         // load students
         StudentManager studentManager = new StudentManager();
 
+        Student s1 = new Student(123,"Cain","2001-02-19","ShadowAssassin","KaynMaynmail");
+        Student s2 = s1;
+
+        System.out.println(s1);
+        System.out.println(s2);
+
+        s2.setCaoNumber(222);
+
+        System.out.println(s2);
+
         // load courses
         CourseManager courseManager= new CourseManager();
 
@@ -109,5 +119,9 @@ public class App
 
         //mgr.saveToFile();
 
+
+
     }
+
+
 }

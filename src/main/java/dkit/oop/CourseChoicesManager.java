@@ -10,6 +10,11 @@ package dkit.oop;
 //
 // Clone all received and returned objects - encapsulation
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class CourseChoicesManager {
 
     // reference to constructor injected studentManager
@@ -19,9 +24,10 @@ public class CourseChoicesManager {
     private CourseManager courseManager;
 
     // Store all the Course details -  fast access
+    private ArrayList<Course> courseList = new ArrayList<>();
 
     // caoNumber, course selection list - for fast access
-
+    private Map<Student, List<Course>> studentChoices = new HashMap<>();
 
     // CourseChoicesManager DEPENDS on both the StudentManager and CourseManager to access
     // students details and course details.  So, we receive a reference to each via
