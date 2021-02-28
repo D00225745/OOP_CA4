@@ -1,9 +1,7 @@
 package dkit.oop;
 
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -57,6 +55,21 @@ public class CourseManager {
         }
     }
 
+    public void saveCoursesToFile()
+    {
+        try(BufferedWriter coursesFile = new BufferedWriter(new FileWriter("courses.txt")))
+        {
+            for(Course course : courses)
+            {
+                coursesFile.write(course.getCourseId()+","+course.getLevel()+","+course.getTitle() + "," +course.getInstitution());
+                coursesFile.write("\n");
+            }
+        }
+        catch(IOException ioe)
+        {
+            System.out.println("Could not save the course...");
+        }
+    }
 
 
 //
