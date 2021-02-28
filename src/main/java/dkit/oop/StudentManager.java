@@ -50,10 +50,10 @@ public class StudentManager {
     }
 
 
-    public boolean logIn()
+    public int logIn()
     {
         boolean loop = true;
-        int caoNumber = 1;
+        int caoNumber = 0;
 
         while(loop)
         {
@@ -62,7 +62,6 @@ public class StudentManager {
                 loop = false;
                 isRegistered(caoNumber);
             }
-
             catch(NumberFormatException nfe)
             {
                 System.out.println("enter a valid CAO number");
@@ -78,7 +77,7 @@ public class StudentManager {
             }
             else
             {
-                System.out.println("Incorrect information, try again.");
+                System.out.println("Incorrect information. User not registered.. Try again...");
             }
         }
         return caoNumber;
@@ -97,14 +96,7 @@ public class StudentManager {
 
 //    public getStudent() {
 //    }
-public static void addStudent()
-{
-    int caoNumber = Integer.parseInt(enterInfo("caoNumber"));
-    String name = enterInfo("name");
-    String dateOfBirth = enterInfo("dateOfBirth");
-    String password = enterInfo("password");
-    String email = enterInfo("email");
-}
+
 
     private static String enterInfo(String info)
     {
@@ -146,7 +138,7 @@ public static void addStudent()
         {
             for(Student student : students)
             {
-                studentsFile.write(student.getName()+","+student.getCaoNumber()+","+student.getName()+","student.getDayOfBirth()+","+student.getPassword()+","+student.getEmail());
+                studentsFile.write(student.getName()+","+student.getCaoNumber()+","+student.getName()+","+ student.getDayOfBirth()+","+student.getPassword()+","+student.getEmail());
                 studentsFile.write("\n");
             }
         }
@@ -156,14 +148,13 @@ public static void addStudent()
         }
     }
 
-    public void addStudent()
+    public static void addStudent()
     {
-        int caoNumber = loopUntilValidIntEntry("caoNumber");
-        String name = enterField("name");
-        String dateOfBirth = enterField("dateOfBirth");
-        String password = enterField("password");
-        String email = enterField("email");
-
+        int caoNumber = Integer.parseInt(enterInfo("caoNumber"));
+        String name = enterInfo("name");
+        String dateOfBirth = enterInfo("dateOfBirth");
+        String password = enterInfo("password");
+        String email = enterInfo("email");
     }
 
     public void deleteStudent()

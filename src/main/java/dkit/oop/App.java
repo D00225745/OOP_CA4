@@ -137,13 +137,15 @@ public class App
     {
         boolean loop = true;
         MainMenu menuOption;
+        boolean loggedIn = false;
+        int caoNumber = -1;
         int option = -1;
         while(loop)
         {
             printMainMenu();
             try
             {
-                String input = keyboard.nextInt();
+                option = keyboard.nextInt();
                 if(option < 0 || option >= MainMenu.values().length)
                 {
                     throw new IllegalArgumentException();
@@ -155,10 +157,18 @@ public class App
                     case QUIT_APPLICATION:
                         loop = false;
                         break;
-                        case LOG_IN;
-                        if(studentManager.logIn())
+                    case LOG_IN:
+                        if(!loggedIn)
                         {
-                            loggedIn=true;
+                            caoNumber = studentManager.logIn();
+                            if(caoNumber != 1)
+                            {
+                                loggedIn = true;
+                            }
+                        }
+                        else
+                        {
+                            System.out.println("This user is not registered.. please register first...");
                         }
                 }
 
@@ -174,7 +184,7 @@ public class App
                         loop = false;
                         break;
                     case DISPLAY_PLAYER_MENU:
-                        doPlayerMainMenuLoop(studentManager, courseManager);
+                        doStudentMenuLoop(studentManager, courseManager);
                         break;
                 }
             }
@@ -191,7 +201,7 @@ public class App
         System.out.println("Thanks for using the app");
     }
 
-    private void doPlayerMainMenuLoop(StudentManager studentManager)
+    private void doStudentMenuLoop(StudentManager studentManager, CourseManager courseManager)
     {
         boolean loop = true;
         StudentMenu menuOption;
@@ -244,6 +254,24 @@ public class App
             System.out.println("\t" +  i + ". " + MainMenu.values()[i].toString());
         }
         System.out.print("Enter a number to select the option (0 to quit):>");
+    }
+
+    private static void addStudent(CourseChoicesManager mgr)
+    {
+        int studentID = 0;
+        boolean nonRepeatingID = false;
+        while(!nonRepeatingID)
+        {
+            System.out.println("Please enter student id");
+            try
+            {
+                studentID = keyboard.nextInt();
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println("Please enter numbers only...");
+            }
+        }
     }
 
 
