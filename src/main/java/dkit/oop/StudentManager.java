@@ -110,9 +110,10 @@ public class StudentManager {
     {
         try(BufferedWriter studentsFile = new BufferedWriter(new FileWriter("students.txt")))
         {
-            for(Student student : students)
+            for(Integer myKey : students.keySet())
             {
-                studentsFile.write(student.getName()+","+student.getCaoNumber()+","+student.getName()+","+ student.getDayOfBirth()+","+student.getPassword()+","+student.getEmail());
+
+                studentsFile.write(students.get(myKey).getCaoNumber()+","+students.get(myKey).getName()+","+students.get(myKey).getDayOfBirth()+","+ students.get(myKey).getPassword()+","+students.get(myKey).getEmail());
                 studentsFile.write("\n");
             }
         }
