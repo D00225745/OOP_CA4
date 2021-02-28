@@ -185,7 +185,7 @@ public class App
                         doStudentMenuLoop(studentManager, courseManager);
                         break;
                     case DISPLAY_COURSE_MENU:
-                        //doCourseMenuLoop((courseManager, courseManager));
+                        doCourseMenuLoop(courseManager, courseManager);
                         break;
                 }
             }
@@ -240,7 +240,7 @@ public class App
     }
 
 
-    private void doCourseMenuLoop(CourseManager courseManager)
+    private void doCourseMenuLoop(CourseManager manager, CourseManager courseManager)
     {
         boolean loop = true;
         CourseMenu menuOption;
