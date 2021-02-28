@@ -39,7 +39,7 @@ public class App
                 studentsFile.write(entry.getValue().getCaoNumber() + "," + entry.getValue().getName()+ "," + entry.getValue().getDayOfBirth() + "," + entry.getValue().getPassword() + "," + entry.getValue().getEmail() + "\n");
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Student information could not be added...");
         }
     }
 
@@ -73,7 +73,7 @@ public class App
 
         catch (FileNotFoundException fne)
         {
-            System.out.println(fne.getMessage());
+            System.out.println("Student information could not be loaded...");
         }
 
 
