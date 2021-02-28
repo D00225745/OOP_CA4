@@ -53,7 +53,7 @@ public class CourseManager {
 
         catch (FileNotFoundException fne)
         {
-            System.out.println(fne.getMessage());
+            System.out.println("Could not load Courses...");
         }
     }
 

@@ -3,12 +3,15 @@ package dkit.oop;
 // to manipulate students objects
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class StudentManager {
 
     // Store all students in data structure
+
+    //private ArrayList<Student> students;
     private static Scanner keyboard = new Scanner(System.in);
 
     HashMap<Integer, Student> students = new HashMap<Integer, Student>();
@@ -17,7 +20,7 @@ public class StudentManager {
     public StudentManager() {
         // Hardcode some values to get started
 
-
+        HashMap<Integer, Student> students = new HashMap<Integer, Student>();
 
         // later, load from text file "students.dat" and populate studentsMap
     }
@@ -51,6 +54,24 @@ public class StudentManager {
             System.out.println(fne.getMessage());
         }
     }
+
+    public void saveStudentsToFile()
+    {
+        try(BufferedWriter studentsFile = new BufferedWriter(new FileWriter("students.txt")))
+        {
+            for(Student student : students)
+            {
+
+                studentsFile.write(student.getCaoNumber()+","+student.getName()+","+ student.getDayOfBirth()+"," + student.getPassword()+"," + student.getEmail()+",");
+                studentsFile.write("\n");
+            }
+        }
+        catch(IOException ioe)
+        {
+            System.out.println("Could not save the students...");
+        }
+    }
+
 
 
     public int logIn()
@@ -105,25 +126,6 @@ public class StudentManager {
             students.get(studentToFind);
         }
         return null;
-    }
-
-
-
-    public void saveStudentsToFile()
-    {
-        try(BufferedWriter studentsFile = new BufferedWriter(new FileWriter("students.txt")))
-        {
-            for(Student student : students)
-            {
-
-                studentsFile.write(student.getCaoNumber()+","+student.getName()+","+ student.getDayOfBirth()+"," + student.getPassword()+"," + student.getEmail()+",");
-                studentsFile.write("\n");
-            }
-        }
-        catch(IOException ioe)
-        {
-            System.out.println("Could not save the students");
-        }
     }
 
 
