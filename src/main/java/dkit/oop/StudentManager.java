@@ -26,6 +26,7 @@ public class StudentManager {
     {
         try(Scanner studentFile = new Scanner(new BufferedReader(new FileReader("students.txt"))))
         {
+
             String input;
             while(studentFile.hasNextLine())
             {
@@ -37,8 +38,10 @@ public class StudentManager {
                 String password = data[3];
                 String email = data[4];
 
-                Student readInStudent = new Student(caoNumber,name,dateOfBirth,password,email);
-                this.students.put(caoNumber,readInStudent);
+                    Student readInStudent = new Student(caoNumber,name,dateOfBirth,password,email);
+                    this.students.put(caoNumber,readInStudent);
+
+
 
             }
         }
@@ -110,10 +113,10 @@ public class StudentManager {
     {
         try(BufferedWriter studentsFile = new BufferedWriter(new FileWriter("students.txt")))
         {
-            for(Integer myKey : students.keySet())
+            for(Student student : students)
             {
 
-                studentsFile.write(students.get(myKey).getCaoNumber()+","+students.get(myKey).getName()+","+students.get(myKey).getDayOfBirth()+","+ students.get(myKey).getPassword()+","+students.get(myKey).getEmail());
+                studentsFile.write(student.getCaoNumber()+","+student.getName()+","+ student.getDayOfBirth()+"," + student.getPassword()+"," + student.getEmail()+",");
                 studentsFile.write("\n");
             }
         }
@@ -127,8 +130,8 @@ public class StudentManager {
 
     public void printStudent()
     {
-        String studentToDisplay = enterInfo("student to display");
-        Student studentToPrint = findStudent(studentToDisplay);
+        String nameToPrint = enterInfo("name to print");
+        Student studentToPrint = findStudent(nameToPrint);
         if(studentToPrint != null)
         {
             System.out.println(studentToPrint);
@@ -152,13 +155,12 @@ public class StudentManager {
     {
         if(this.students != null)
         {
-            String studentToRemove = enterInfo("Student to remove");
-            Student studentsToRemove = findStudent(studentToRemove);
-            if(studentsToRemove != null)
+            String nameToDelete = enterInfo("name to delete");
+            Student studentToDelete = findStudent(nameToDelete);
+            if(studentToDelete != null)
             {
-                students.remove(studentToRemove);
+                students.remove(studentToDelete);
             }
-            else
             {
                 System.out.println("Selected student does not exist..");
             }
