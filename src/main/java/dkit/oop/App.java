@@ -126,7 +126,7 @@ public class App
         studentCopy2.setName("Raum");
         studentCopy2.setDayOfBirth("2003-04-18");
         studentCopy2.setPassword("BigMac");
-        studentCopy2.setEmail("Zbabweilolz");
+        studentCopy2.setEmail("CopyEmailTest");
         System.out.println(studentCopy1);
         System.out.println(studentCopy2);
     }
@@ -181,7 +181,7 @@ public class App
                     case QUIT_APPLICATION:
                         loop = false;
                         break;
-                    case DISPLAY_PLAYER_MENU:
+                    case DISPLAY_STUDENT_MENU:
                         doStudentMenuLoop(studentManager, courseManager);
                         break;
                 }
@@ -216,16 +216,16 @@ public class App
                 menuOption = StudentMenu.values()[option];
                 switch (menuOption)
                 {
-                    case QUIT_PLAYER_MENU:
+                    case QUIT_STUDENT_MENU:
                         loop = false;
                         break;
-                    case ADD_PLAYER:
+                    case ADD_STUDENT:
                         studentManager.addStudent();
                         break;
-                    case DELETE_PLAYER:
+                    case DELETE_STUDENT:
                         studentManager.deleteStudent();
                         break;
-                    case PRINT_PLAYER:
+                    case PRINT_STUDENT:
                         studentManager.printStudent();
                         break;
                 }

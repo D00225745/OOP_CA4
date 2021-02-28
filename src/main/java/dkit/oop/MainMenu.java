@@ -4,6 +4,6 @@ public enum MainMenu
 {
     QUIT_APPLICATION,
     LOG_IN,
-    DISPLAY_PLAYER_MENU;
+    DISPLAY_STUDENT_MENU;
 
 }

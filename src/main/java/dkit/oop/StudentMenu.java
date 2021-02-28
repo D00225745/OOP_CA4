@@ -2,8 +2,8 @@ package dkit.oop;
 
 public enum StudentMenu
 {
-    QUIT_PLAYER_MENU,
-    ADD_PLAYER,
-    DELETE_PLAYER,
-    PRINT_PLAYER;
+    QUIT_STUDENT_MENU,
+    ADD_STUDENT,
+    DELETE_STUDENT,
+    PRINT_STUDENT;
 }

@@ -107,7 +107,7 @@ public class CourseManager {
         return null;
     }
 
-    public void displayCourse()
+    public void printCourse()
     {
         String courseToDisplay = enterField("course to display");
         Course courseToPrint = findCourse(courseToDisplay);
