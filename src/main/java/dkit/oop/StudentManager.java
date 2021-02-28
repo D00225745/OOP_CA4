@@ -4,7 +4,6 @@ package dkit.oop;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class StudentManager {
@@ -59,7 +58,7 @@ public class StudentManager {
         while(loop)
         {
             try {
-                caoNumber = Integer.parseInt(enterinfo("caoNumber"));
+                caoNumber = Integer.parseInt(enterInfo("caoNumber"));
                 loop = false;
                 isRegistered(caoNumber);
             }
@@ -68,8 +67,8 @@ public class StudentManager {
                 System.out.println("enter a valid CAO number");
             }
 
-            String password = enterinfo("password");
-            String dateOfBirth = enterinfo("dateOfBirth");
+            String password = enterInfo("password");
+            String dateOfBirth = enterInfo("dateOfBirth");
             Student student = students.get(caoNumber);
 
             if(student.getDayOfBirth().equals(dateOfBirth) && student.getPassword().equals(password))
@@ -83,19 +82,6 @@ public class StudentManager {
         }
         return caoNumber;
     }
-
-
-    private String enterinfo(String info)
-    {
-        String input;
-        System.out.println("please enter your " + info + " .");
-        input keyboard.nextLine();
-        return input;
-    }
-
-        
-
-
 
 
     private static String enterInfo(String info)
@@ -136,6 +122,8 @@ public class StudentManager {
         }
     }
 
+
+
     public void printStudent()
     {
         String studentToDisplay = enterInfo("student to display");
@@ -171,7 +159,7 @@ public class StudentManager {
             }
             else
             {
-                System.out.println("Selected course does not exist..");
+                System.out.println("Selected student does not exist..");
             }
         }
     }

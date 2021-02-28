@@ -1,3 +1,3 @@
 123,Cain,2001-02-19,ShadowAssassin,KaynMaynmail
-333,Zed,2000-11-14,ZedzDedBeyby,LivingShadowMan
-222,Rhaast,1998-06-07,RhaastIsFaast,RhaastgamingMail
+333,Zed,2000-11-14,Zeddead,Livingshadowman
+222,Rhaast,1998-06-07,Fastrhaast,Rhaastgamingmail
