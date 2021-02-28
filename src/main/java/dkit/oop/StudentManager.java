@@ -2,9 +2,7 @@ package dkit.oop;
 // StudentManager encapsulates the storage and ability
 // to manipulate students objects
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -52,6 +50,49 @@ public class StudentManager {
     }
 
 
+    public boolean logIn()
+    {
+        boolean loop = true;
+        int caoNumber = 1;
+
+        while(loop)
+        {
+            try {
+                caoNumber = Integer.parseInt(enterinfo("caoNumber"));
+                loop = false;
+                isRegistered(caoNumber);
+            }
+
+            catch(NumberFormatException nfe)
+            {
+                System.out.println("enter a valid CAO number");
+            }
+
+            String password = enterinfo("password");
+            String dateOfBirth = enterinfo("dateOfBirth");
+            Student student = students.get(caoNumber);
+
+            if(student.getDayOfBirth().equals(dateOfBirth) && student.getPassword().equals(password))
+            {
+                return caoNumber;
+            }
+            else
+            {
+                System.out.println("Incorrect information, try again.");
+            }
+        }
+        return caoNumber;
+    }
+
+
+    private String enterinfo(String info)
+    {
+        String input;
+        System.out.println("please enter your " + info + " .");
+        input keyboard.nextLine();
+        return input;
+    }
+
         
 
 //    public getStudent() {
@@ -73,22 +114,8 @@ public static void addStudent()
         return input;
     }
     //
-    public void removeStudent()
-    {
-        if(this.students != null)
-        {
-            String studentToRemove = enterInfo("Student to remove");
-            Student studentsToRemove = findStudent(studentToRemove);
-            if(studentsToRemove != null)
-            {
-                students.remove(studentToRemove);
-            }
-            else
-            {
-                System.out.println("Selected course does not exist..");
-            }
-        }
-    }
+
+
 
     private Student findStudent(String studentToFind)
     {
@@ -112,11 +139,49 @@ public static void addStudent()
             System.out.println("Seleced student does not exist...");
         }
     }
-//    public addStudent() {
-//    }
-//
-//    public removeStudent() {
-//    }
+
+    public void saveStudentsToFile()
+    {
+        try(BufferedWriter studentsFile = new BufferedWriter(new FileWriter("students.txt")))
+        {
+            for(Student student : students)
+            {
+                studentsFile.write(student.getName()+","+student.getCaoNumber()+","+student.getName()+","student.getDayOfBirth()+","+student.getPassword()+","+student.getEmail());
+                studentsFile.write("\n");
+            }
+        }
+        catch(IOException ioe)
+        {
+            System.out.println("Could not save the students");
+        }
+    }
+
+    public void addStudent()
+    {
+        int caoNumber = loopUntilValidIntEntry("caoNumber");
+        String name = enterField("name");
+        String dateOfBirth = enterField("dateOfBirth");
+        String password = enterField("password");
+        String email = enterField("email");
+
+    }
+
+    public void deleteStudent()
+    {
+        if(this.students != null)
+        {
+            String studentToRemove = enterInfo("Student to remove");
+            Student studentsToRemove = findStudent(studentToRemove);
+            if(studentsToRemove != null)
+            {
+                students.remove(studentToRemove);
+            }
+            else
+            {
+                System.out.println("Selected course does not exist..");
+            }
+        }
+    }
 
 //    isRegistered( caoNumber)
       public boolean isRegistered(int caoNumber)

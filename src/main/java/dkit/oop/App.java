@@ -1,5 +1,7 @@
 package dkit.oop;
 
+import com.sun.tools.javac.Main;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -79,9 +81,13 @@ public class App
 
     }
 
+    private static Scanner keyboard = new Scanner(System.in);
+
+
+
     private void start() {
 
-        System.out.println("The Student Course Listing Menu starts here...");
+        System.out.println("The Student Course Listing Menu starts here...?..");
         // load students
         StudentManager studentManager = new StudentManager();
         // load courses
@@ -113,11 +119,21 @@ public class App
 
         //mgr.saveToFile();
 
-
-
     }
 
-    private void doMainMenuLoop(StudentManager, studentManager, CourseManager courseManager)
+    private static void makeDeepCopy(Student studentCopy1)
+    {
+        Student studentCopy2 = new Student(studentCopy1);
+        studentCopy2.setCaoNumber(557);
+        studentCopy2.setName("Raum");
+        studentCopy2.setDayOfBirth("2003-04-18");
+        studentCopy2.setPassword("BigMac");
+        studentCopy2.setEmail("Zbabweilolz");
+        System.out.println(studentCopy1);
+        System.out.println(studentCopy2);
+    }
+
+    private void doMainMenuLoop(StudentManager studentManager, CourseManager courseManager)
     {
         boolean loop = true;
         MainMenu menuOption;
@@ -125,17 +141,25 @@ public class App
         while(loop)
         {
             printMainMenu();
-            Scanner keyboard ;
             try
             {
-                String input = keyboard.nextLine();
-                if(input.isEmpty() || input.length() > 1)
+                String input = keyboard.nextInt();
+                if(option < 0 || option >= MainMenu.values().length)
                 {
                     throw new IllegalArgumentException();
                 }
-                else
+                keyboard.nextLine();
+                menuOption = MainMenu.values()[option];
+                switch (menuOption)
                 {
-                    option = Integer.parseInt(input);
+                    case QUIT_APPLICATION:
+                        loop = false;
+                        break;
+                        case LOG_IN;
+                        if(studentManager.logIn())
+                        {
+                            loggedIn=true;
+                        }
                 }
 
                 if(option < 0 || option >= MainMenu.values().length)
@@ -150,64 +174,64 @@ public class App
                         loop = false;
                         break;
                     case DISPLAY_PLAYER_MENU:
-                        doPlayerMainMenuLoop(playerDB);
+                        doPlayerMainMenuLoop(studentManager, courseManager);
                         break;
                 }
             }
             catch(InputMismatchException ime)
             {
-                System.out.println(Colours.RED + "Please enter a valid option" + Colours.RESET);
+                System.out.println("Please enter a valid option");
                 keyboard.nextLine();
             }
             catch(IllegalArgumentException iae)
             {
-                System.out.println(Colours.RED + "Please enter a valid option" + Colours.RESET);
+                System.out.println("Please enter a valid option");
             }
         }
-        System.out.println(Colours.BLUE + "Thanks for using the app" + Colours.RESET);
+        System.out.println("Thanks for using the app");
     }
 
-    private void doPlayerMainMenuLoop(PlayerDB playerDB)
+    private void doPlayerMainMenuLoop(StudentManager studentManager)
     {
         boolean loop = true;
-        PlayerMainMenu menuOption;
+        StudentMenu menuOption;
         int option;
         while (loop)
         {
-            printPlayerMainMenu();
+            printStudentMenu();
             try
             {
                 option = keyboard.nextInt();
                 keyboard.nextLine();
-                menuOption = PlayerMainMenu.values()[option];
+                menuOption = StudentMenu.values()[option];
                 switch (menuOption)
                 {
                     case QUIT_PLAYER_MENU:
                         loop = false;
                         break;
                     case ADD_PLAYER:
-                        playerDB.addPlayer();
+                        studentManager.addStudent();
                         break;
                     case DELETE_PLAYER:
-                        playerDB.deletePlayer();
+                        studentManager.deleteStudent();
                         break;
                     case PRINT_PLAYER:
-                        playerDB.printPlayer();
+                        studentManager.printStudent();
                         break;
                 }
             } catch (InputMismatchException ime)
             {
-                System.out.println(Colours.RED + "Please enter a valid option" + Colours.RESET);
+                System.out.println("Please enter a valid option");
             }
         }
     }
 
-    private void printPlayerMainMenu()
+    private void printStudentMenu()
     {
         System.out.println("\n Options to select:");
-        for(int i=0; i < PlayerMainMenu.values().length;i++)
+        for(int i=0; i < StudentMenu.values().length;i++)
         {
-            System.out.println("\t" + Colours.BLUE + i + ". " + PlayerMainMenu.values()[i].toString()+Colours.RESET);
+            System.out.println("\t" +  i + ". " + StudentMenu.values()[i].toString());
         }
         System.out.print("Enter a number to select the option (0 to quit):>");
     }
@@ -217,7 +241,7 @@ public class App
         System.out.println("\n Options to select:");
         for(int i=0; i < MainMenu.values().length;i++)
         {
-            System.out.println("\t" + Colours.BLUE + i + ". " + MainMenu.values()[i].toString()+Colours.RESET);
+            System.out.println("\t" +  i + ". " + MainMenu.values()[i].toString());
         }
         System.out.print("Enter a number to select the option (0 to quit):>");
     }

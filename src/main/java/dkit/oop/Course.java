@@ -11,12 +11,18 @@ public class Course {
     // Accepts a Course object as an argument and copies all the field values
     // into a new Course object. Returns the new cloned object.
     // (add here)
-    public Course (Course course)
+
+    public Course()
     {
-        courseId = course.courseId;
-        level = course.level;
-        title = course.title;
-        institution = course.institution;
+        this("DK821","8","BSc in Computing in Software Development","Dundalk Institute of Technology");
+    }
+
+    public Course(Course courseCopy1)
+    {
+        this.courseId = courseCopy1.courseId;
+        this.level = courseCopy1.level;
+        this.title = courseCopy1.title;
+        this.institution = courseCopy1.institution;
     }
 
 

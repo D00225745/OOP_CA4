@@ -12,13 +12,18 @@ public class Student {
     // Copies the contents of a Student object argument into
     // a new Student object, and returns that new object (a clone)
     // (add here)
-    public Student(Student studentCopy)
+    public Student()
     {
-        this.caoNumber = studentCopy.caoNumber;
-        this.name = studentCopy.name;
-        this.dateOfBirth = studentCopy.dateOfBirth;
-        this.password = studentCopy.password;
-        this.email = studentCopy.email;
+        this(123,"Cain","2001-02-19","ShadowAssassin","KaynMaynmail");
+    }
+
+    public Student(Student studentCopy1)
+    {
+        this.caoNumber = studentCopy1.caoNumber;
+        this.name = studentCopy1.name;
+        this.dateOfBirth = studentCopy1.dateOfBirth;
+        this.password = studentCopy1.password;
+        this.email = studentCopy1.email;
     }
 
     // Constructor
