@@ -1,7 +1,5 @@
 package dkit.oop;
 
-import com.sun.tools.javac.Main;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -201,6 +199,8 @@ public class App
         System.out.println("Thanks for using the app");
     }
 
+
+
     private void doStudentMenuLoop(StudentManager studentManager, CourseManager courseManager)
     {
         boolean loop = true;
@@ -236,12 +236,57 @@ public class App
         }
     }
 
+    private void doCourseMenuLoop(CourseManager courseManager)
+    {
+        boolean loop = true;
+        CourseMenu menuOption;
+        int option;
+        while (loop)
+        {
+            printCourseMenu();
+            try
+            {
+                option = keyboard.nextInt();
+                keyboard.nextLine();
+                menuOption = CourseMenu.values()[option];
+                switch (menuOption)
+                {
+                    case QUIT_COURSE_MENU:
+                        loop = false;
+                        break;
+                    case ADD_COURSE:
+                        courseManager.addCourse();
+                        break;
+                    case DELETE_COURSE:
+                        courseManager.removeCourse();
+                        break;
+                    case PRINT_COURSE:
+                        courseManager.printCourse();
+                        break;
+                }
+            } catch (InputMismatchException ime)
+            {
+                System.out.println("Please enter a valid option");
+            }
+        }
+    }
+
     private void printStudentMenu()
     {
         System.out.println("\n Options to select:");
         for(int i=0; i < StudentMenu.values().length;i++)
         {
             System.out.println("\t" +  i + ". " + StudentMenu.values()[i].toString());
+        }
+        System.out.print("Enter a number to select the option (0 to quit):>");
+    }
+
+    private void printCourseMenu()
+    {
+        System.out.println("\n Options to select:");
+        for(int i=0; i < CourseMenu.values().length;i++)
+        {
+            System.out.println("\t" +  i + ". " + CourseMenu.values()[i].toString());
         }
         System.out.print("Enter a number to select the option (0 to quit):>");
     }

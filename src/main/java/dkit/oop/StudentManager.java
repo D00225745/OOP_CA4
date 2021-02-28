@@ -4,6 +4,7 @@ package dkit.oop;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class StudentManager {
@@ -94,8 +95,7 @@ public class StudentManager {
 
         
 
-//    public getStudent() {
-//    }
+
 
 
     private static String enterInfo(String info)
@@ -118,19 +118,7 @@ public class StudentManager {
         return null;
     }
 
-    public void displayStudent()
-    {
-        String studentToDisplay = enterInfo("student to display");
-        Student studentToPrint = findStudent(studentToDisplay);
-        if(studentToPrint != null)
-        {
-            System.out.println(studentToPrint);
-        }
-        else
-        {
-            System.out.println("Seleced student does not exist...");
-        }
-    }
+
 
     public void saveStudentsToFile()
     {
@@ -145,6 +133,20 @@ public class StudentManager {
         catch(IOException ioe)
         {
             System.out.println("Could not save the students");
+        }
+    }
+
+    public void printStudent()
+    {
+        String studentToDisplay = enterInfo("student to display");
+        Student studentToPrint = findStudent(studentToDisplay);
+        if(studentToPrint != null)
+        {
+            System.out.println(studentToPrint);
+        }
+        else
+        {
+            System.out.println("Seleced student does not exist...");
         }
     }
 
@@ -179,5 +181,7 @@ public class StudentManager {
       {
           return students.keySet().contains(caoNumber);
       }
+
+
 //        students.isValid()
 }
