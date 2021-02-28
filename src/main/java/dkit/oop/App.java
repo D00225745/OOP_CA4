@@ -184,6 +184,9 @@ public class App
                     case DISPLAY_STUDENT_MENU:
                         doStudentMenuLoop(studentManager, courseManager);
                         break;
+                    case DISPLAY_COURSE_MENU:
+                        //doCourseMenuLoop((courseManager, courseManager));
+                        break;
                 }
             }
             catch(InputMismatchException ime)
