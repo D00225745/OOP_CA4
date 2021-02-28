@@ -236,6 +236,7 @@ public class App
         }
     }
 
+
     private void doCourseMenuLoop(CourseManager courseManager)
     {
         boolean loop = true;
@@ -271,6 +272,8 @@ public class App
         }
     }
 
+
+
     private void printStudentMenu()
     {
         System.out.println("\n Options to select:");
@@ -281,6 +284,7 @@ public class App
         System.out.print("Enter a number to select the option (0 to quit):>");
     }
 
+
     private void printCourseMenu()
     {
         System.out.println("\n Options to select:");
@@ -290,6 +294,8 @@ public class App
         }
         System.out.print("Enter a number to select the option (0 to quit):>");
     }
+
+
 
     private void printMainMenu()
     {
